@@ -14,14 +14,7 @@ class House
   def save
     sql = "INSERT INTO houses (name, logo) VALUES ($1, $2) RETURNING id"
     values = [@name, @logo]
-    SqlRunner.run(sql, values)
-  end
-
-  def self.all()
-    sql = "SELECT * FROM houses"
-    values = []
-    result = SqlRunner.run(sql, values)
-    return result.map { |house| House.new(house) }
+    @id = SqlRunner.run(sql, values)[0]['id']
   end
 
   def self.find(id)
@@ -31,4 +24,22 @@ class House
     return House.new(result)
   end
 
+  def self.find_all()
+    sql = "SELECT * FROM houses"
+    values = []
+    result = SqlRunner.run(sql, values)
+    return result.map { |house| House.new(house) }
+  end
+
+  def self.delete(id)
+    sql = "DELETE * FROM houses WHERE id = $1"
+    values = [id]
+    SqlRunner.run(sql,values)
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM houses"
+    values = []
+    SqlRunner.run(sql,values)
+  end
 end

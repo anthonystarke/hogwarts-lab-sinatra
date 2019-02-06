@@ -1,20 +1,26 @@
 require('sinatra')
 require('sinatra/contrib/all')
-require_relative('./models/hogwarts')
+require_relative('./models/student')
+require_relative('./models/house')
 also_reload('./models/*')
 
 get '/all-students' do
-  @students = Student.all()
+  @students = Student.find_all()
   erb (:index)
 end
 
 get '/create-student' do
-  @houses = House.all()
+  @houses = House.find_all()
   erb (:new)
 end
 
 post '/create-student' do
   new_student = Student.new(params)
   new_student.save()
+  redirect to '/all-students'
+end
+
+post '/delete/:id' do
+  Student.delete(params[:id])
   redirect to '/all-students'
 end
