@@ -9,6 +9,7 @@ get '/all-students' do
 end
 
 get '/create-student' do
+  @houses = House.all()
   erb (:new)
 end
 

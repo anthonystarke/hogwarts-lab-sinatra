@@ -4,20 +4,20 @@ require_relative('../models/house')
 student_1_details = {
   "first_name" => "Cho",
   "second_name" => "Chang",
-  "house" => "Ravenclaw",
+  "house_id" => 2,
   "age" => "23"
 }
 
 student_2_details = {
   "first_name" => "Harry",
   "second_name" => "Potter",
-  "house" => "Gryffindor",
+  "house_id" => 1,
   "age" => "25"
 }
 student_3_details = {
   "first_name" => "Ron",
   "second_name" => "Weasley",
-  "house" => "Gryffindor",
+  "house_id" => 1,
   "age" => "26"
 }
 

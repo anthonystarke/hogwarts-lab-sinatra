@@ -3,7 +3,7 @@ require_relative('../db/sql_runner')
 
 class Student
 
-  attr_reader :id, :first_name, :second_name, :house, :age
+  attr_reader :id, :first_name, :second_name, :house_id, :age
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
