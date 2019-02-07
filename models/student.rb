@@ -19,8 +19,8 @@ class Student
           on houses.id = students.house_id
           WHERE students.id = $1"
     values =[@id]
-    result = SqlRunner.run(sql,values)[0]['name']
-    return result
+    result = SqlRunner.run(sql,values)[0]
+    return House.new(result)
   end
 
   def save

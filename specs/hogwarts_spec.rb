@@ -66,7 +66,8 @@ class TestStudent < MiniTest::Test
   end
 
   def test_find_student_house__name
-    assert_equal("Gryffindor",@student_1.find_house)
+    student = Student.find(2)
+    assert_equal("Ravenclaw",student.find_house)
   end
 
 end
