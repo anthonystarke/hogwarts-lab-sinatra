@@ -14,11 +14,17 @@ get '/create-student' do
   erb (:new)
 end
 
+get '/all-houses' do
+  @houses = House.find_all()
+  erb(:index_house)
+end
+
 post '/create-student' do
   new_student = Student.new(params)
   new_student.save()
   redirect to '/all-students'
 end
+
 
 post '/delete/:id' do
   Student.delete(params[:id])
